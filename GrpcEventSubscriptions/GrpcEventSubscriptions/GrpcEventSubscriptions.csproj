@@ -13,6 +13,7 @@
     <RepositoryUrl>https://github.com/max-4711/ez-grpc-push-events</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageReleaseNotes>1.0.0: Initial release</PackageReleaseNotes>
+    <PackageId>EventStream4711</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
