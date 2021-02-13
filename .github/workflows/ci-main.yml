@@ -1,0 +1,19 @@
+name: CI Build (.NET Core 3.1)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+    - name: Build packages
+      run: dotnet pack GrpcEventSubscriptions/GrpcEventSubscriptions.sln -c Release -o out
+    - name: Push package
+      run: dotnet nuget push out/*.nupkg -k ${{ secrets.NUGETORG_PKG_PUSH_SECRET }} -s https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols true
